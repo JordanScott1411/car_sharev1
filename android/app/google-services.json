@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "894481451880",
+    "firebase_url": "https://carsharev2-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "carsharev2",
+    "storage_bucket": "carsharev2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894481451880:android:0a1c14ffb00573366ea4dd",
+        "android_client_info": {
+          "package_name": "com.example.car_sharev1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "894481451880-ihk4odl9adtpnl1nuqvqmqnputhg2r21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBG93kPhaHnmgX4HuvpS0FLSRKE9KF_uS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "894481451880-ihk4odl9adtpnl1nuqvqmqnputhg2r21.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "894481451880-icj7q7mi7erdag8u1b0migvkm0ce1n65.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.carSharev1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
