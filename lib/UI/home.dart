@@ -18,7 +18,7 @@ class _HomeState extends State<Home>{
   final List<Widget>screens = [
     Mytrajet(),
     Chat(),
-    Profile(),
+    ProfileScreen(),
     SuiviTraj(),
     PostTra(),
   ];
@@ -133,7 +133,7 @@ class _HomeState extends State<Home>{
               minWidth: 40,
               onPressed:() {
                 setState(() {
-                  currentScreen= PostTra();
+                  currentScreen= ProfileScreen();
                   currentTab=3;
                 });
               },
