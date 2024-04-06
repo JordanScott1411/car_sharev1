@@ -3,8 +3,10 @@ import 'package:car_sharev1/UI/register_screen.dart';
 import 'package:car_sharev1/UI/omboarding_screen.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:car_sharev1/UI/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -154,9 +156,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             minimumSize: Size(double.infinity, 50)
                         ),
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Home())
-                          );
+                          FirebaseAuth.instance.signInWithEmailAndPassword(email: emailTextEditingController.text, password: passwordTextEditingController.text).then((value) {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                          }).catchError((errorMessage) {
+                            Fluttertoast.showToast(msg: "error occured: \n $errorMessage");
+                          });
+
 
                         },
                         child: Text(
