@@ -1,25 +1,25 @@
 import 'package:car_sharev1/UI/login_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
 
 class Splash extends StatefulWidget {
-  const Splash({Key? key}) : super(key: key);
+  const Splash({super.key});
 
   @override
   State<Splash> createState() => _SplashState();
 }
 
 class _SplashState extends State<Splash> {
+  @override
   void initState(){
     super.initState();
     _navigatetohome();
   }
 
   _navigatetohome()async{
-    await Future.delayed( Duration(milliseconds: 2000), () {});
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
+    await Future.delayed( const Duration(milliseconds: 3000), () {});
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const LoginScreen()));
   }
 
   @override
@@ -30,9 +30,9 @@ class _SplashState extends State<Splash> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/images/Logo.png'),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Container(
-              child: Text(
+              child: const Text(
                 'CarShare',
                 style: TextStyle(
                     fontSize: 24,

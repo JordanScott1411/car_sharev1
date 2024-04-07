@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class Constants {
   //Primary color
-  static var primaryColor = Color.fromARGB(255, 23, 57, 209);
-  static var blackColor = Color.fromARGB(137, 26, 25, 25);
+  static var primaryColor = const Color.fromARGB(255, 23, 57, 209);
+  static var blackColor = const Color.fromARGB(137, 26, 25, 25);
 
   //Onboarding texts
   static var titleOne = "Creer et publier votre trajet.";

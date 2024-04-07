@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 
 class Mytrajet extends StatefulWidget{
+  const Mytrajet({super.key});
+
   @override
   _MytrajetState createState() => _MytrajetState();
 }

@@ -1,11 +1,10 @@
 import 'package:car_sharev1/UI/home.dart';
-import 'package:car_sharev1/UI/login_screen.dart';
 import 'package:car_sharev1/constants.dart';
 import 'package:flutter/material.dart';
 
 
 class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({Key? key}) : super(key: key);
+  const OnboardingScreen({super.key});
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -81,6 +80,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             bottom: 60,
             right: 30,
             child: Container(
+              padding: const EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Constants.primaryColor,
+              ),
               child: IconButton(
                   onPressed: () {
                     setState(() {
@@ -102,11 +106,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     size: 24,
                     color: Colors.white,
                   )),
-              padding: const EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Constants.primaryColor,
-              ),
             ),
           ),
         ],
@@ -152,11 +151,11 @@ class createPage extends StatelessWidget {
   final String description;
 
   const createPage({
-    Key? key,
+    super.key,
     required this.image,
     required this.title,
     required this.description,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

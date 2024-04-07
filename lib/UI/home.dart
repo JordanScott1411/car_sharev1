@@ -1,13 +1,15 @@
 import 'package:car_sharev1/UI/chat.dart';
 import 'package:car_sharev1/UI/postTra.dart';
-import 'package:car_sharev1/UI/profile.dart';
 import 'package:car_sharev1/UI/mytrajet.dart';
+import 'package:car_sharev1/UI/profile/profile_screen.dart';
 import 'package:car_sharev1/UI/seachTrajet.dart';
 import 'package:car_sharev1/UI/suiviTraj.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class Home extends StatefulWidget {
-  const Home ({Key? key}) : super(key: key);
+  const Home ({super.key});
   @override
   _HomeState createState() => _HomeState();
 }
@@ -16,49 +18,50 @@ class _HomeState extends State<Home>{
 
   int currentTab = 0;
   final List<Widget>screens = [
-    Mytrajet(),
-    Chat(),
-    ProfileScreen(),
-    SuiviTraj(),
-    PostTra(),
+    const Mytrajet(),
+    const Chat(),
+    const ProfileScreen(),
+    const SuiviTraj(),
+    const PostTra(),
+
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = Mytrajet();
+  Widget currentScreen = const Mytrajet();
 
 
   @override
   Widget build(BuildContext context) {
-   return Scaffold(
-    body: PageStorage(
-      bucket: bucket, 
-      child: currentScreen,
-   ),
-   floatingActionButton: FloatingActionButton(
-
-    child: Icon(Icons.search),
-    onPressed: () {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => SearchTrajet()));
-      //Action que doit faire ce boutton
-    },
-   ),
-   floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-   bottomNavigationBar: BottomAppBar(
-      shape: CircularNotchedRectangle(),
-      notchMargin: 10,
-      child: Container(
-        height: 60,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Row(
-              crossAxisAlignment :CrossAxisAlignment.start,
-              children: [
+    return GetMaterialApp(
+      home: Scaffold(
+        body: PageStorage(
+          bucket: PageStorageBucket(),
+          child: currentScreen,
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.search),
+          onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchTrajet()));
+      //Action que doit faire ce bouton
+        },
+      ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: BottomAppBar(
+          shape: const CircularNotchedRectangle(),
+          notchMargin: 10,
+          child: SizedBox(
+            height: 60,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+              Row(
+                crossAxisAlignment :CrossAxisAlignment.start,
+                children: [
                 MaterialButton(
                   minWidth: 40,
                   onPressed:() {
                     setState(() {
-                      currentScreen= Mytrajet();
+                      currentScreen= const Mytrajet();
                       currentTab=0;
                     });
                   },
@@ -78,23 +81,23 @@ class _HomeState extends State<Home>{
                   ),
               ),
                 MaterialButton(
-              minWidth: 40,
-              onPressed:() {
-                setState(() {
-                  currentScreen= PostTra();
+                  minWidth: 40,
+                  onPressed:() {
+                  setState(() {
+                  currentScreen= const PostTra();
                   currentTab=1;
                 });
               },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.add_circle,
-                    color: currentTab == 1? Colors.blue : Colors.grey,
-                  ),
-                  Text(
-                    'Publier',
-                    style: TextStyle(color: currentTab ==1 ? Colors.blue : Colors.grey
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    Icon(
+                      Icons.add_circle,
+                      color: currentTab == 1? Colors.blue : Colors.grey,
+                    ),
+                    Text(
+                      'Publier',
+                      style: TextStyle(color: currentTab ==1 ? Colors.blue : Colors.grey
                     ),
                   )
                 ],
@@ -110,7 +113,7 @@ class _HomeState extends State<Home>{
                   minWidth: 40,
                   onPressed:() {
                     setState(() {
-                      currentScreen= Mytrajet();
+                      currentScreen = const Mytrajet();
                       currentTab=2;
                     });
                   },
@@ -130,21 +133,19 @@ class _HomeState extends State<Home>{
                   ),
               ),
                 MaterialButton(
-              minWidth: 40,
-              onPressed:() {
-                setState(() {
-                  currentScreen= ProfileScreen();
-                  currentTab=3;
-                });
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.supervised_user_circle,
-                    color: currentTab == 3? Colors.blue : Colors.grey,
-                  ),
-                  Text(
+                  minWidth: 40,
+                  onPressed:() {
+                  setState(() {
+                    currentScreen= const ProfileScreen();
+                    currentTab=3;
+                  });
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        LineAwesomeIcons.user_circle,color: currentTab == 3? Colors.blue : Colors.grey,),
+                      Text(
                     'Profile',
                     style: TextStyle(color: currentTab ==3 ? Colors.blue : Colors.grey
                     ),
@@ -161,6 +162,7 @@ class _HomeState extends State<Home>{
 
       ),
    ),
-   );
+   )
+    );
   }
 }

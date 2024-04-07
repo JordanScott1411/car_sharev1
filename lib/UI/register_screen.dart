@@ -1,8 +1,6 @@
-import 'dart:js_util';
 
 import 'package:car_sharev1/UI/login_screen.dart';
 import 'package:car_sharev1/UI/home.dart';
-import 'package:car_sharev1/UI/omboarding_screen.dart';
 import 'package:car_sharev1/global/global.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -12,7 +10,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+  const RegisterScreen({super.key});
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -55,13 +53,13 @@ void _submit() async {
 
         }
         await Fluttertoast.showToast(msg: "succesfully registered");
-        Navigator.push(context, MaterialPageRoute(builder: (c) => Home()  ));
+        Navigator.push(context, MaterialPageRoute(builder: (c) => const Home()  ));
     }).catchError((errorMessage) {
       Fluttertoast.showToast(msg: "error occured: \n $errorMessage");
     });
   }
   else{
-    Fluttertoast.showToast(msg: "not all the feilds are valid");
+    Fluttertoast.showToast(msg: "not all the fields  are valid");
   }
 }
 
@@ -77,12 +75,12 @@ void _submit() async {
         },
         child: Scaffold(
           body: ListView(
-            padding: EdgeInsets.all(0),
+            padding: const EdgeInsets.all(0),
             children: [
               Column(
                 children: [
                   Image.asset('assets/images/Logo.png'),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   Text(
                     'Register',
                     style: TextStyle(
@@ -110,14 +108,14 @@ void _submit() async {
                               ],
                               decoration: InputDecoration(
                                   hintText: 'Name',
-                                  hintStyle: TextStyle(
+                                  hintStyle: const TextStyle(
                                     color: Colors.grey,
                                   ),
                                   filled: true,
                                   fillColor: darkTheme ? Colors.black45 : Colors.grey.shade200,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(40),
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         width: 0,
                                         style: BorderStyle.none,
                                       )
@@ -135,31 +133,32 @@ void _submit() async {
                                 if(text.length > 50){
                                   return 'lenght can\'t be more than 50';
                                 }
+                                return null;
                               },
                               onChanged: (text) => setState(() {
                                 nameTextEditingController.text = text;
                               }),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             TextFormField(
                               inputFormatters: [
                                 LengthLimitingTextInputFormatter(100)
                               ],
                               decoration: InputDecoration(
                                   hintText: 'Email',
-                                  hintStyle: TextStyle(
+                                  hintStyle: const TextStyle(
                                     color: Colors.grey,
                                   ),
                                   filled: true,
                                   fillColor: darkTheme ? Colors.black45 : Colors.grey.shade200,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(40),
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         width: 0,
                                         style: BorderStyle.none,
                                       )
                                   ),
-                                  prefixIcon: Icon(Icons.person, color: darkTheme ? Colors.amber.shade400 : Colors.grey,)
+                                  prefixIcon: Icon(Icons.email, color: darkTheme ? Colors.amber.shade400 : Colors.grey,)
                               ),
                               autovalidateMode: AutovalidateMode.onUserInteraction,
                               validator: (text){
@@ -175,12 +174,13 @@ void _submit() async {
                                 if(text.length > 99){
                                   return 'Email can\'t be more than 99';
                                 }
+                                return null;
                               },
                               onChanged: (text) => setState(() {
                                 emailTextEditingController.text = text;
                               }),
                             ),
-                            SizedBox(height: 10,),
+                            const SizedBox(height: 10,),
 
                             IntlPhoneField(
                               showCountryFlag: true,
@@ -190,14 +190,14 @@ void _submit() async {
                               ),
                               decoration: InputDecoration(
                                 hintText: 'phone number',
-                                hintStyle: TextStyle(
+                                hintStyle: const TextStyle(
                                   color: Colors.grey,
                                 ),
                                 filled: true,
                                 fillColor: darkTheme ? Colors.black45 : Colors.grey.shade200,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(40),
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       width: 0,
                                       style: BorderStyle.none,
                                     )
@@ -208,21 +208,21 @@ void _submit() async {
                                 phoneTextEditingController.text = text.completeNumber;
                               }),
                             ),
-                            SizedBox(height: 10,),
+                            const SizedBox(height: 10,),
                             TextFormField(
                               inputFormatters: [
                                 LengthLimitingTextInputFormatter(100)
                               ],
                               decoration: InputDecoration(
                                   hintText: 'address',
-                                  hintStyle: TextStyle(
+                                  hintStyle: const TextStyle(
                                     color: Colors.grey,
                                   ),
                                   filled: true,
                                   fillColor: darkTheme ? Colors.black45 : Colors.grey.shade200,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(40),
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         width: 0,
                                         style: BorderStyle.none,
                                       )
@@ -240,13 +240,14 @@ void _submit() async {
                                 if(text.length > 99){
                                   return 'Address can\'t be more than 99';
                                 }
+                                return null;
                               },
                               onChanged: (text) => setState(() {
                                 addressTextEditingController.text = text;
                               }),
                             ),
 
-                            SizedBox(height: 10,),
+                            const SizedBox(height: 10,),
 
                             TextFormField(
                               obscureText: !_passwordVisible,
@@ -255,14 +256,14 @@ void _submit() async {
                               ],
                               decoration: InputDecoration(
                                   hintText: 'password',
-                                  hintStyle: TextStyle(
+                                  hintStyle: const TextStyle(
                                     color: Colors.grey,
                                   ),
                                   filled: true,
                                   fillColor: darkTheme ? Colors.black45 : Colors.grey.shade200,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(40),
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         width: 0,
                                         style: BorderStyle.none,
                                       )
@@ -301,7 +302,7 @@ void _submit() async {
                                 passwordTextEditingController.text = text;
                               }),
                             ),
-                            SizedBox(height: 10,),
+                            const SizedBox(height: 10,),
 
                             TextFormField(
                               obscureText: !_passwordVisible,
@@ -310,14 +311,14 @@ void _submit() async {
                               ],
                               decoration: InputDecoration(
                                   hintText: 'confirm password',
-                                  hintStyle: TextStyle(
+                                  hintStyle: const TextStyle(
                                     color: Colors.grey,
                                   ),
                                   filled: true,
                                   fillColor: darkTheme ? Colors.black45 : Colors.grey.shade200,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(40),
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         width: 0,
                                         style: BorderStyle.none,
                                       )
@@ -359,20 +360,20 @@ void _submit() async {
                                 confirmpasswordTextEditingController.text = text;
                               }),
                             ),
-                            SizedBox(height: 20,),
+                            const SizedBox(height: 20,),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 20),
                               child: RichText(
                                 textAlign: TextAlign.center,
-                                text: TextSpan(
+                                text: const TextSpan(
                                   style: TextStyle(color: Colors.black,fontSize: 12),
                                   children: [
                                     TextSpan(
-                                      text: 'By creating an account you agree to all our' + " ",
+                                      text: 'By creating an account you agree to all our' " ",
 
                                     ),
                                     TextSpan(
-                                        text: 'terms of service' + " ",
+                                        text: 'terms of service' " ",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold
                                         )
@@ -390,7 +391,7 @@ void _submit() async {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 10,),
+                            const SizedBox(height: 10,),
 
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
@@ -399,12 +400,12 @@ void _submit() async {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(32)
                                   ),
-                                  minimumSize: Size(double.infinity, 50)
+                                  minimumSize: const Size(double.infinity, 50)
                               ),
                               onPressed: () {
                                 _submit();
                               },
-                              child: Text(
+                              child: const Text(
                                 'Register',
                                 style: TextStyle(
                                     fontSize: 20,
@@ -413,24 +414,24 @@ void _submit() async {
                               ),
                             ),
 
-                            SizedBox(height: 10,),
+                            const SizedBox(height: 10,),
 
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
+                                const Text(
                                   'Have an account?',
                                   style: TextStyle(
                                     color: Colors.grey,
                                     fontSize: 15,
                                   ),
                                 ),
-                                SizedBox(width: 5,),
+                                const SizedBox(width: 5,),
 
                                 GestureDetector(
                                   onTap: () {
                                     Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) => LoginScreen())
+                                        MaterialPageRoute(builder: (context) => const LoginScreen())
                                     );
                                   },
                                   child: Text(
